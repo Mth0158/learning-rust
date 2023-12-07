@@ -15,7 +15,8 @@ fn main() {
     // tutorial_data_types();
     // tutorial_math();
     // tutorial_conditions();
-    tutorial_arrays();
+    // tutorial_arrays();
+    tutorial_tuples();
 }
 
 fn tutorial_variables() {
@@ -132,4 +133,12 @@ fn tutorial_arrays() {
     for val in arr_2.iter() {
         println!("Val: {}", val);
     }
+}
+
+fn tutorial_tuples() {
+    let my_tuple: (u8, String, f64) = (29, "Mathieu".to_string(), 50_000.00);
+    println!("Name: {}", my_tuple.1);
+
+    let(v1, v2, v3) = my_tuple;
+    println!("Age: {}", v1);
 }
