@@ -15,6 +15,7 @@ fn main() {
     // tutorial_data_types();
     // tutorial_math();
     // tutorial_conditions();
+    tutorial_arrays();
 }
 
 fn tutorial_variables() {
@@ -100,4 +101,35 @@ fn tutorial_conditions() {
         Ordering::Equal => println!("Can vote"),
         Ordering::Greater => println!("Can vote"),
     };
+}
+
+fn tutorial_arrays() {
+    let arr_1 = [1, 2, 3, 4];
+    println!("1st: {}", arr_1[0]);
+    println!("length: {}", arr_1.len());
+
+    let arr_2 = [1, 2, 3, 4, 5];
+    let mut loop_idx = 0;
+    loop {
+        if arr_2[loop_idx] % 2 == 0 {
+            loop_idx+= 1;
+            continue;
+        }
+
+        if arr_2[loop_idx] == 5 {
+            break;
+        }
+
+        println!("Val: {}", arr_2[loop_idx]);
+        loop_idx += 1;
+    }
+
+    while loop_idx < arr_2.len() {
+        println!("Array: {}", arr_2[loop_idx]);
+        loop_idx += 1;
+    }
+
+    for val in arr_2.iter() {
+        println!("Val: {}", val);
+    }
 }
