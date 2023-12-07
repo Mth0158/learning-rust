@@ -14,6 +14,7 @@ fn main() {
     // tutorial_constants();
     // tutorial_data_types();
     // tutorial_math();
+    // tutorial_conditions();
 }
 
 fn tutorial_variables() {
@@ -62,4 +63,41 @@ fn tutorial_math() {
 
     let random_num = rand::thread_rng().gen_range(1..101);
     println!("Random: {}", random_num);
+}
+
+fn tutorial_conditions() {
+    let age = 8;
+    if (age >= 1) && (age >= 18) {
+        println!("Hey you have an important birthday");
+    } else if (age == 21) || (age == 50) {
+        println!("Hey you have an important birthday 2");
+    } else if (age >= 65) {
+        println!("Hey you have an important birthday 3");
+    } else {
+        println!("Not birthday");
+    }
+
+    let mut my_age = 47;
+    let can_vote = if my_age >= 18 {
+        true
+    } else {
+        false
+    };
+    println!("Can vote: {}", can_vote);
+
+    let age2 = 8;
+    match age2 {
+        1..=18 => println!("Not birthday"),
+        21 | 50 => println!("Not birthday"),
+        65..=i32::MAX => println!("Not birthday"),
+        _ => println!("All other cases")
+    };
+
+    let my_age = 18;
+    let voting_age = 18;
+    match  my_age.cmp(&voting_age) {
+        Ordering::Less => println!("Can't vote"),
+        Ordering::Equal => println!("Can vote"),
+        Ordering::Greater => println!("Can vote"),
+    };
 }
