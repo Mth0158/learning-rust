@@ -18,7 +18,8 @@ fn main() {
     // tutorial_arrays();
     // tutorial_tuples();
     // tutorial_strings();
-    tutorial_casting();
+    // tutorial_casting();
+    tutorial_enums();
 }
 
 fn tutorial_variables() {
@@ -184,4 +185,38 @@ fn tutorial_casting() {
     let int_u8: u8 = 5;
     let int2_u8: u8 = 4;
     let int3_u3: u32 = (int_u8 as u32) + (int2_u8 as u32);
+}
+
+fn tutorial_enums() {
+    enum Day {
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday,
+        Sunday
+    }
+
+    impl Day {
+        fn is_weekend(&self) -> bool {
+            match self {
+                Day::Saturday | Day::Sunday => true,
+                _ => false
+            }
+        }
+    }
+
+    let today:Day = Day::Monday;
+    match today {
+        Day::Monday => println!("Every hates Monday"),
+        Day::Tuesday => println!("Every hates Tuesday"),
+        Day::Wednesday => println!("Every hates Wednesday"),
+        Day::Thursday => println!("Every hates Thursday"),
+        Day::Friday => println!("Every hates Friday"),
+        Day::Saturday => println!("Every hates Saturday"),
+        Day::Sunday => println!("Every hates Sunday"),
+    }
+
+    println!("Is today the weekend? {}", today.is_weekend());
 }
