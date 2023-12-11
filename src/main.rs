@@ -17,7 +17,8 @@ fn main() {
     // tutorial_conditions();
     // tutorial_arrays();
     // tutorial_tuples();
-    tutorial_strings();
+    // tutorial_strings();
+    tutorial_casting();
 }
 
 fn tutorial_variables() {
@@ -177,4 +178,10 @@ fn tutorial_strings() {
     for char in st8.bytes() {
         println!("{}", char);
     }
+}
+
+fn tutorial_casting() {
+    let int_u8: u8 = 5;
+    let int2_u8: u8 = 4;
+    let int3_u3: u32 = (int_u8 as u32) + (int2_u8 as u32);
 }
