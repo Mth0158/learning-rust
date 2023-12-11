@@ -34,6 +34,12 @@ fn sum_list(list: &[i32]) -> i32 {
     sum
 }
 
+use std::ops::Add;
+
+fn get_sum_gen<T:Add<Output = T>>(x: T, y: T) -> T {
+    return x + y
+}
+
 fn main() {
     // Thanks Derek Banas for this incredible tutorial
     // You can find it at https://www.youtube.com/watch?v=ygL_xcavzQ4
@@ -49,11 +55,13 @@ fn main() {
     // tutorial_casting();
     // tutorial_enums();
     // tutorial_vectors();
-    say_hello();
-    get_sum(3, 4);
-    println!("get_sum_2: {}", get_sum_2(3, 3));
-    let num_list = vec![1,2,3,4,5];
-    println!("Sum of list = {}", sum_list(&num_list));
+    // say_hello();
+    // get_sum(3, 4);
+    // println!("get_sum_2: {}", get_sum_2(3, 3));
+    // let num_list = vec![1,2,3,4,5];
+    // println!("Sum of list = {}", sum_list(&num_list));
+    println!("{}", get_sum_gen(1, 3));
+    println!("{}", get_sum_gen(1.5, 3.2));
 }
 
 fn tutorial_variables() {
