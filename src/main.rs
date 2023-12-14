@@ -60,6 +60,7 @@ fn main() {
     // println!("get_sum_2: {}", get_sum_2(3, 3));
     // let num_list = vec![1,2,3,4,5];
     // println!("Sum of list = {}", sum_list(&num_list));
+    // test
     println!("{}", get_sum_gen(1, 3));
     println!("{}", get_sum_gen(1.5, 3.2));
 }
