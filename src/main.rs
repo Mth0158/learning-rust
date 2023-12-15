@@ -311,7 +311,8 @@ fn main() {
     // play_with_hasmaps();
     // play_with_structs();
     // play_with_shapes();
-    order_food();
+    // order_food();
+    play_with_errors_and_files();
 }
 
 fn play_with_ownership() {
@@ -403,4 +404,38 @@ fn play_with_shapes() {
     let circ: Circle = Shape::new(10.0, 10.0);
     println!("Rec area: {}", rec.area());
     println!("Circ area: {}", circ.area());
+}
+
+fn play_with_errors_and_files() {
+    // panic!("Terrible error");
+    // let lil_arr= [1, 2];
+    // println!("{}", lil_arr[10]);
+    let path = "lines.text";
+    let output = File::create(path);
+    let mut output = match output {
+        Ok(file) => file,
+        Err(error) => {
+            panic!("Problem creating file: {:?}", error);
+        }
+    };
+    write!(output, "Just some\nRandom words").expect("Failed to write to file");
+
+    let input = File::open(path).unwrap();
+    let buffered = BufReader::new(input);
+
+    for line in buffered.lines() {
+        println!("{}", line.unwrap());
+    }
+
+    let outpu2 = File::create("rand.txt");
+    let output2 = match outpu2 {
+        Ok(file) => file,
+        Err(error) => match error.kind() {
+            ErrorKind::NotFound => match File::create("rand.txt") {
+                Ok(fc) => fc,
+                Err(e) => panic!("Can't create file: {:?}", error),
+            }
+            _other_error => panic!("Problem opening file: {:?}", error)
+        }
+    };
 }
