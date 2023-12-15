@@ -313,7 +313,8 @@ fn main() {
     // play_with_shapes();
     // order_food();
     // play_with_errors_and_files();
-    play_with_iterators();
+    // play_with_iterators();
+    play_with_closures();
 }
 
 fn play_with_ownership() {
@@ -449,4 +450,30 @@ fn play_with_iterators() {
     // arr_it.into_iter();
     let mut iter1 = arr_it.iter();
     println!("1st: {:?}", iter1.next());
+}
+
+fn play_with_closures() {
+    let can_vote = |age: i32| {
+        age >= 18
+    };
+    println!("Can vote? {}", can_vote(8));
+
+    let mut samp1 = 5;
+    let print_var = || println!("samp1: {}", samp1);
+    print_var();
+
+    samp1 = 10;
+    let mut change_var = || samp1 += 1;
+    change_var();
+    println!("samp1: {}", samp1);
+    samp1 = 10;
+    println!("samp1: {}", samp1);
+
+    fn use_fun<T>(a: i32, b: i32, func: T) -> i32 where T: Fn(i32, i32) -> i32 {
+        func(a, b)
+    }
+    let sum = |a, b| a + b;
+    let prod = |a, b| a * b;
+    println!("5 + 4 = {}", use_fun(5, 4, sum));
+    println!("5 * 4 = {}", use_fun(5, 4, prod));
 }
