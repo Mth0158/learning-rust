@@ -306,7 +306,8 @@ use std::collections::HashMap;
 fn main() {
     // play_with_ownership();
     // play_with_hasmaps();
-    play_with_structs();
+    // play_with_structs();
+    play_with_shapes();
 }
 
 fn play_with_ownership() {
@@ -360,4 +361,42 @@ fn play_with_structs() {
         length: 4,
         height: 10.5,
     };
+}
+
+fn play_with_shapes() {
+    const PI: f32 = 3.14;
+    trait Shape {
+        fn new(length: f32, width: f32) -> Self;
+        fn area(&self) -> f32;
+    }
+    struct Rectangle {
+        length: f32,
+        width: f32,
+    }
+    struct Circle {
+        length: f32,
+        width: f32,
+    }
+
+    impl Shape for Rectangle {
+        fn new(length: f32, width: f32) -> Rectangle {
+            return Rectangle{length, width};
+        }
+        fn area(&self) -> f32 {
+            return self.length * self.width;
+        }
+    }
+    impl Shape for Circle {
+        fn new(length: f32, width: f32) -> Circle {
+            return Circle{length, width};
+        }
+        fn area(&self) -> f32 {
+            return (self.length / 2.0).powf(2.0) * PI;
+        }
+    }
+
+    let rec: Rectangle = Shape::new(10.0, 10.0);
+    let circ: Circle = Shape::new(10.0, 10.0);
+    println!("Rec area: {}", rec.area());
+    println!("Circ area: {}", circ.area());
 }
