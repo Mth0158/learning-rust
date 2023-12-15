@@ -303,11 +303,15 @@ fn change_str(name: &mut String) {
 
 use std::collections::HashMap;
 
+mod restaurant;
+use crate::restaurant::order_food;
+
 fn main() {
     // play_with_ownership();
     // play_with_hasmaps();
     // play_with_structs();
-    play_with_shapes();
+    // play_with_shapes();
+    order_food();
 }
 
 fn play_with_ownership() {
