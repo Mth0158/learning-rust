@@ -304,11 +304,20 @@ fn change_str(name: &mut String) {
 use std::collections::HashMap;
 
 fn main() {
-    // let mut str1 = String::from("Mathieu");
+    // play_with_ownership();
+    // play_with_hasmaps();
+    play_with_structs();
+}
+
+fn play_with_ownership() {
+    let mut str1 = String::from("Mathieu");
     // print_str(str1);
-    // let str3 = print_return_str(str1);
-    // println!("str3 = {}", str3)
-    // change_str(&mut str1);
+    let str3 = print_return_str(str1.clone());
+    println!("str3 = {}", str3);
+    change_str(&mut str1);
+}
+
+fn play_with_hasmaps() {
     let mut heroes = HashMap::new();
     heroes.insert("Superman", "Clark Kent");
     heroes.insert("Batman", "Bruce Wayne");
@@ -327,4 +336,28 @@ fn main() {
             None => println!("Batman is not a hero :/"),
         }
     }
+}
+
+fn play_with_structs() {
+    struct Customer {
+        name: String,
+        address: String,
+        balance: f32,
+    }
+    let mut bob = Customer {
+        name: String::from("Bob Smith"),
+        address: String::from("55 Main St"),
+        balance:  234.5
+    };
+    bob.address = String::from("48 Main st");
+    println!("Bob's new address: {}", bob.address);
+
+    struct Rectangle<T, U> {
+        length: T,
+        height: U,
+    }
+    let rec = Rectangle {
+        length: 4,
+        height: 10.5,
+    };
 }
