@@ -314,7 +314,8 @@ fn main() {
     // order_food();
     // play_with_errors_and_files();
     // play_with_iterators();
-    play_with_closures();
+    // play_with_closures();
+    play_with_smart_pointers();
 }
 
 fn play_with_ownership() {
@@ -476,4 +477,37 @@ fn play_with_closures() {
     let prod = |a, b| a * b;
     println!("5 + 4 = {}", use_fun(5, 4, sum));
     println!("5 * 4 = {}", use_fun(5, 4, prod));
+}
+
+fn play_with_smart_pointers() {
+    // Box
+    let b_int1 = Box::new(10);
+    println!("b_int1 = {}", b_int1);
+
+    struct TreeNode<T> {
+        pub left: Option<Box<TreeNode<T>>>,
+        pub right: Option<Box<TreeNode<T>>>,
+        pub key: T,
+    }
+    impl<T> TreeNode<T> {
+        pub fn new(key: T) -> Self {
+            TreeNode {
+                left: None,
+                right: None,
+                key,
+            }
+        }
+        pub fn left(mut self, node: TreeNode<T>) -> Self {
+            self.left = Some(Box::new(node));
+            self
+        }
+        pub fn right(mut self, node: TreeNode<T>) -> Self {
+            self.right = Some(Box::new(node));
+            self
+        }
+    }
+
+    let node1 = TreeNode::new(1)
+        .left(TreeNode::new(2))
+        .right(TreeNode::new(3));
 }
