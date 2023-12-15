@@ -312,7 +312,8 @@ fn main() {
     // play_with_structs();
     // play_with_shapes();
     // order_food();
-    play_with_errors_and_files();
+    // play_with_errors_and_files();
+    play_with_iterators();
 }
 
 fn play_with_ownership() {
@@ -438,4 +439,14 @@ fn play_with_errors_and_files() {
             _other_error => panic!("Problem opening file: {:?}", error)
         }
     };
+}
+
+fn play_with_iterators() {
+    let mut arr_it = [1,2,3,4];
+    for val in arr_it.iter() {
+        println!("value: {}", val);
+    }
+    // arr_it.into_iter();
+    let mut iter1 = arr_it.iter();
+    println!("1st: {:?}", iter1.next());
 }
