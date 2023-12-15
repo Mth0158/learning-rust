@@ -40,7 +40,7 @@ fn get_sum_gen<T:Add<Output = T>>(x: T, y: T) -> T {
     return x + y
 }
 
-fn main() {
+fn old_main() {
     // Thanks Derek Banas for this incredible tutorial
     // You can find it at https://www.youtube.com/watch?v=ygL_xcavzQ4
 
@@ -60,9 +60,8 @@ fn main() {
     // println!("get_sum_2: {}", get_sum_2(3, 3));
     // let num_list = vec![1,2,3,4,5];
     // println!("Sum of list = {}", sum_list(&num_list));
-    // test
-    println!("{}", get_sum_gen(1, 3));
-    println!("{}", get_sum_gen(1.5, 3.2));
+    // println!("{}", get_sum_gen(1, 3));
+    // println!("{}", get_sum_gen(1.5, 3.2));
 }
 
 fn tutorial_variables() {
@@ -284,4 +283,28 @@ fn tutorial_vectors() {
     }
     println!("Vector length: {}", vec2.len());
     println!("Pop: {:?}", vec2.pop());
+}
+
+// -----
+
+fn print_str(x: String) {
+    println!("A string: {}", x);
+}
+
+fn print_return_str(x: String) -> String {
+    println!("A string: {}", x);
+    x
+}
+
+fn change_str(name: &mut String) {
+    name.push_str(" is happy");
+    println!("Message: {}", name);
+}
+
+fn main() {
+    let mut str1 = String::from("Mathieu");
+    // print_str(str1);
+    // let str3 = print_return_str(str1);
+    // println!("str3 = {}", str3)
+    change_str(&mut str1);
 }
